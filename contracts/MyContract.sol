@@ -15,6 +15,10 @@ contract BaseContract is Initializable {
 contract MyContract is BaseContract {
     uint256 public x;
 
+    /// @custom:oz-upgrades-unsafe-allow constructor
+    constructor() {
+        _disableInitializers();
+    }
     function initialize(uint256 _x) public initializer {
         BaseContract.initialize(); // Do not forget this call!
         x = _x;
